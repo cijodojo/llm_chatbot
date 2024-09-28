@@ -11,7 +11,7 @@ from sentence_transformers import SentenceTransformer
 index_file_path = '../app/indices/ecommerce_indice.index'
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-data_file = os.path.join(BASE_DIR, '../dataset/customer_data.json')
+data_file = os.path.join(BASE_DIR, '../dataset/ecommerce-dataset.json')
 
 class ChatBot:
   def __init__(self) -> None:
@@ -25,7 +25,7 @@ class ChatBot:
   def load_answers(self):
     with open(data_file, 'r') as f:
       qa_data = json.load(f)
-    self.qa_answers = [items['answer'] for items in qa_data]
+    self.qa_answers = [items['response'] for items in qa_data]
     
   async def genrate_embedding(self, file: UploadFile):
     file_contents = await file.read()

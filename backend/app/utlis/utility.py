@@ -10,7 +10,7 @@ class Utility:
   # load training/embedding input_file
   def load_training_file(self, file_content):
     data = json.loads(file_content)
-    questions = [item['question'] for item in data]
+    questions = [item['instruction'] for item in data]
     return questions
   
   def format_response(self, response_text):
