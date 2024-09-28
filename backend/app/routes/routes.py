@@ -1,7 +1,7 @@
 from fastapi import APIRouter, UploadFile
 from pydantic import BaseModel
 from controllers import chatbotcontroller
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, HTMLResponse
 
 router = APIRouter()
 
@@ -12,6 +12,6 @@ class Query(BaseModel):
 async def genrate_embedding(file: UploadFile):
   return await chatbotcontroller.genrate_embedding(file)
 
-@router.post('/chatbot', response_class=PlainTextResponse)
+@router.post('/chatbot')
 def chatbot(query: Query):
   return chatbotcontroller.chatbot(query)

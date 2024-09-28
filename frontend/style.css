@@ -1,0 +1,118 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+.chat-container {
+  background-color: #fff;
+  width: 500px; /* Standard mobile width */
+  height: 100vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  padding: 15px;
+  text-align: center;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+}
+
+.chat-window {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: scroll;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+.chat-window::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+
+.chat-input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ccc;
+}
+
+#user-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  outline: none;
+  font-size: 14px;
+}
+
+#send-btn {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #6a5acd;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#send-btn:hover {
+  background-color: #5a4fb7;
+}
+
+/* Message container */
+.message-container {
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 60%;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* User message aligned right with purple background */
+.user-message {
+  justify-content: flex-end;
+}
+
+.user-message .message {
+  background-color: #6a5acd;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+/* Bot message aligned left with gray background */
+.bot-message {
+  justify-content: flex-start;
+}
+
+.bot-message .message {
+  background-color: #e0e0e0;
+  color: #333;
+  border-bottom-left-radius: 0;
+}

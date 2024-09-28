@@ -52,7 +52,8 @@ class ChatBot:
     else:
       response_text = 'Sorry, Please re-pharse your answer'
     
-    final_answer = utility.format_response(response_text)
+    # final_answer = utility.format_response(response_text) 
+    final_answer = response_text
     return final_answer
         
 chatbotcontroller = ChatBot()
