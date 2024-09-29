@@ -41,8 +41,8 @@ Steps:
 5. Update Dataset for Chatbot Testing:
   Update the app/controllers/chatbot_controller.py file with the dataset you want to test (currently supports insurance and e-commerce datasets). Modify the following variables:
   
-  a. "index_file_path": Set this to the desired .index file located in the /indices directory.
-  a. "data_file": Set this to the desired .json file located in the /dataset directory.
+  a. "index_file_path": Set this to the desired .index file in the genrate_embedding() function of chatbot_controller located in controllers directory.
+  a. "data_file": Set this to the desired .json file in the chatbot() function of chatbot_controller located in controllers directory.
 
 6. Interact with the Chatbot: To interact with the chatbot and get the desired output, use the following API:
 

@@ -8,11 +8,6 @@ from fastapi import UploadFile
 from utlis import utility
 from sentence_transformers import SentenceTransformer
 
-index_file_path = '../app/indices/ecommerce_indice.index'
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-data_file = os.path.join(BASE_DIR, '../dataset/ecommerce-dataset.json')
-
 class ChatBot:
   def __init__(self) -> None:
     self.embeddings = []
@@ -23,11 +18,14 @@ class ChatBot:
     
   # load answer when the application starts
   def load_answers(self):
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    data_file = os.path.join(BASE_DIR, '../dataset/ecommerce-dataset.json')
     with open(data_file, 'r') as f:
       qa_data = json.load(f)
     self.qa_answers = [items['response'] for items in qa_data]
     
   async def genrate_embedding(self, file: UploadFile):
+    index_file_path = '../app/indices/ecommerce_indice.index'
     file_contents = await file.read()
     questions = utility.load_training_file(file_contents)
     if os.path.exists(index_file_path):
@@ -40,6 +38,7 @@ class ChatBot:
       vector_db.save_faiss_index(index, index_file_path)
       
   def chatbot(self, query):
+    index_file_path = '../app/indices/ecommerce_indice.index'
     query_embedding = self.model.encode([utility.clear_text(query.query)], convert_to_tensor=False)
     norm_query_embedding = normalize(np.array(query_embedding), norm='l2')
     index = vector_db.load_faiss_index(index_file_path)
